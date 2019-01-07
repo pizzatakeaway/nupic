@@ -306,7 +306,8 @@ class NuPICPlotOutput(NuPICOutput):
     self._anomalyGraph.relim()
     self._anomalyGraph.autoscale_view(True, True, True)
 
-    plt.draw()
+    #plt.draw()
+    plt.pause(0.001)
 
 
 
