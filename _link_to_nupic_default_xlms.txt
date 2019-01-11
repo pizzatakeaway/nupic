@@ -1,0 +1,2 @@
+home/alessandro/.local/share/virtualenvs/nupic-yn_sXeWq/local/lib/python2.7/site-packages/nupic/support/nupic-site.xml
+
