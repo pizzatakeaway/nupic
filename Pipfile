@@ -26,6 +26,7 @@ PrettyTable = "==0.7.2"
 "nupic.bindings" = "==1.0.6"
 ipykernel = "*"
 jupyterlab = "*"
+requirements-txt = "*"
 
 [requires]
 python_version = "2.7"

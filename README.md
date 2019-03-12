@@ -1,29 +1,17 @@
-# <img src="http://numenta.org/87b23beb8a4b7dea7d88099bfb28d182.svg" alt="NuPIC Logo" width=100/> NuPIC
+# Numenta Platform for Intelligent Computing
 
-## Numenta Platform for Intelligent Computing
+The Numenta Platform for Intelligent Computing (NuPIC) is a machine intelligence platform that implements the HTM learning algorithms. HTM is a detailed computational theory of the neocortex. At the core of HTM are time-based continuous learning algorithms that store and recall spatial and temporal patterns. NuPIC is suited to a variety of problems, particularly anomaly detection and prediction of streaming data sources. For more information, see numenta.org or the NuPIC Forum.
 
-The Numenta Platform for Intelligent Computing (**NuPIC**) is a machine intelligence platform that implements the [HTM learning algorithms](https://numenta.com/resources/papers-videos-and-more/). HTM is a detailed computational theory of the neocortex. At the core of HTM are time-based continuous learning algorithms that store and recall spatial and temporal patterns. NuPIC is suited to a variety of problems, particularly anomaly detection and prediction of streaming data sources. For more information, see [numenta.org](http://numenta.org) or the [NuPIC Forum](https://discourse.numenta.org/c/nupic).
+For usage guides, quick starts, and API documentation, see http://nupic.docs.numenta.org/.
 
-For usage guides, quick starts, and API documentation, see <http://nupic.docs.numenta.org/>.
 
-## This project is in Maintenance Mode
+# This Project
+This project aims to investigate HTM performances for **multivariate Anomaly Detection tasks**.  
+We will investigate both the performances of *dependent* and *independent* HTM-models.  
+In this repo we will work using dasets presented in [NAB](https://github.com/numenta/NAB)
 
-We plan to do minor releases only, and limit changes in NuPIC and NuPIC Core to:
-
-- Fixing critical bugs.
-- Features needed to support ongoing research.
-
-## Installing NuPIC
-
-NuPIC binaries are available for:
-
-- Linux x86 64bit
-- OS X 10.9
-- OS X 10.10
-- Windows 64bit
 
 ### Dependencies
-
 The following dependencies are required to install NuPIC on all operating systems.
 
 - [Python 2.7](https://www.python.org/)
@@ -32,43 +20,75 @@ The following dependencies are required to install NuPIC on all operating system
 - [wheel](http://pythonwheels.com)>=0.29.0
 - [numpy](http://www.numpy.org/)
 - C++ 11 compiler like [gcc](https://gcc.gnu.org/) (4.8+) or [clang](http://clang.llvm.org/)
+- MySQL `$ sudo apt install mysql-server` and then follow the [instructions](https://www.digitalocean.com/community/tutorials/how-to-install-the-latest-mysql-on-ubuntu-18-04) starting from *Step 2*.
 
-Additional OS X requirements:
 
-- [Xcode command line tools](https://developer.apple.com/library/ios/technotes/tn2339/_index.html)
+# Install
+1. Git clone: (https://github.com/pizzatakeaway/nupic)[https://github.com/pizzatakeaway/nupic]
+1. Install the environment, type `$ pipenv --two` when in `/home/alessandro/Nextcloud/Leuphana/Masterthesis/Anomaly_Detection/nupic`.  
+The environment is installed in `~/.local/share/virtualenvs/nupic-yn_sXeWq/lib/python2.7/site-packages/nupic`.
+1. Activate environment `$ pipenv shell`
+1. Install requirements `$ pip install -r requirements`.  
+For the list of dependencies: [nupic](https://github.com/numenta/nupic).
+1. Install *nupic* `$ pip install nupic`
+1. Test *nupic* running `$ py.test tests/unit`
+1. To perform swarming:
+    - Install MySQL, `$ sudo apt install mysql-server` and then follow the [instructions](sudo apt install mysql-server) starting from *Step 2*.
+    - Since `root` has a password, create in `$ /nupic/src/nupic/support` the file `nupic-site.xml` that looks like this
 
-### Install
+    ```
+    <?xml version="1.0"?>
+    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 
-Run the following to install NuPIC:
+    <configuration>
 
-    pip install nupic
+    <!-- database credentials, used for swarming -->
 
-### Test
+    <property>
+    <name>nupic.cluster.database.host</name>
+    <value>localhost</value>
+    <description>Name of the machine running the MySQL database server</description>
+    </property>
 
-    # From the root of the repo:
-    py.test tests/unit
+    <property>
+    <name>nupic.cluster.database.user</name>
+    <value>root</value>
+    <description>Username for the MySQL database server </description>
+    </property>
 
-### _Having problems?_
+    <property>
+    <name>nupic.cluster.database.passwd</name>
+    <value>yourpassword</value>
+    <description>Password for the MySQL database server </description>
+    </property>
 
-- You may need to use the `--user` flag for the commands above to install in a non-system location (depends on your environment). Alternatively, you can execute the `pip` commands with `sudo` (not recommended).
-- You may need to add the `--use-wheel` option if you have an older pip version (wheels are now the default binary package format for pip).
+    </configuration>
+    ```
 
-For any other installation issues, please see our [search our forums](https://discourse.numenta.org/search?q=tag%3Ainstallation%20category%3A10) (post questions there). You can report bugs at https://github.com/numenta/nupic/issues.
+    and enter the password in #22.  
+    Finally copy `nupic-site.xml` in `~/.local/share/virtualenvs/nupic-yn_sXeWq/lib/python2.7/site-packages/nupic`.  
+    - Always make sure `PyMySQL = 0.9.3` is installed.
+    - Test *swarm* with `$ python examples/swarm/test_db.py`
 
-Live Community Chat: [![Gitter](https://img.shields.io/badge/gitter-join_chat-blue.svg?style=flat)](https://gitter.im/numenta/public?utm_source=badge)
+1. Install `$ python -m pip install jupyter`
 
-### Installing NuPIC From Source
+**NOTE:**
+- Always perform installations and work inside the environment
 
-To install from local source code, run from the repository root:
 
-    pip install .
+### Notebooks
+1. `Notebooks/Walkthrough_HTM Univariate.ipynb`: example with *1 Field* of how `Encoders`, `Spatial Pooler` and `Temporal Memory` are built upon each other, and how to perform a *walk* along the alogorithm from input to output and vice versa.
+1. `Notebooks/Walkthrough_HTM Multivariate.ipynb`: example with *multiple Fields (2)* of how `Encoders`, `Spatial Pooler` and `Temporal Memory` are built upon each other, and how to perform a *walk* along the alogorithm from input to output and vice versa.
 
-Use the optional `-e` argument for a developer install.
+### Input Data
+The input data need to be formatted as described in: [link](http://nupic.docs.numenta.org/stable/quick-start/example-data.html).
 
-If you want to build the dependent `nupic.bindings` from source, you should build and install from [`nupic.core`](https://github.com/numenta/nupic.core) prior to installing nupic (since a PyPI release will be installed if `nupic.bindings` isn't yet installed).
+### Hyperparameters
+To find the right hyperparameters we decided to adopt the *swarming algorithm*, implemented in [nupic](https://github.com/numenta/nupic).
 
-- Build:
-[![Build Status](https://travis-ci.org/numenta/nupic.png?branch=master)](https://travis-ci.org/numenta/nupic)
-[![AppVeyor Status](https://ci.appveyor.com/api/projects/status/4toemh0qtr21mk6b/branch/master?svg=true)](https://ci.appveyor.com/project/numenta-ci/nupic/branch/master)
-[![CircleCI](https://circleci.com/gh/numenta/nupic.svg?style=svg)](https://circleci.com/gh/numenta/nupic)
-- To cite this codebase: [![DOI](https://zenodo.org/badge/19461/numenta/nupic.svg)](https://zenodo.org/badge/latestdoi/19461/numenta/nupic)
+### Swarm
+
+1. create/edit `search_def.json`:
+    1. **Error Metric**: by default, your model’s accuracy will be evaluated using a MAPE (Mean Average Percent Error) error metric over the last 1000 records seen by the model.
+    1. **Custom Error Metric**: [link](http://nupic.docs.numenta.org/stable/guides/swarming/running.html#using-custom-error-metrics)
+1. run `run_swarm.py --maxWorkers=4`

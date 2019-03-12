@@ -73,3 +73,8 @@ nupic/*py_region.*
 temp/
 docs/_build_html
 /src/nupic/support/nupic-site.xml
+
+# Documents
+Numenta Contributor License V1.1 - signed.pdf
+Numenta\ Contributor\ License\ V1.1\ -\ signed.pdf
+_MySWL_root_psw.txt

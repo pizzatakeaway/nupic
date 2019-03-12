@@ -1,0 +1,54 @@
+{
+  "includedFields": [
+    {
+      "fieldName": "timestamp", 
+      "fieldType": "datetime"
+    }, 
+    {
+      "fieldName": "kw_energy_consumption", 
+      "fieldType": "float"
+    }
+  ], 
+  "streamDef": {
+    "info": "test", 
+    "version": 1, 
+    "streams": [
+      {
+        "info": "rec-center-hourly.csv", 
+        "source": "file://ab_experiments/data/rec-center-hourly.csv", 
+        "columns": [
+          "*"
+        ], 
+        "last_record": 100
+      }
+    ], 
+    "aggregation": {
+      "hours": 0, 
+      "microseconds": 0, 
+      "seconds": 0, 
+      "fields": [
+        [
+          "kw_energy_consumption"
+        ], 
+        [
+          "timestamp"
+        ]
+      ], 
+      "weeks": 0, 
+      "months": 0, 
+      "minutes": 0, 
+      "days": 0, 
+      "milliseconds": 0, 
+      "years": 0
+    }
+  }, 
+  "inferenceType": "MultiStep", 
+  "inferenceArgs": {
+    "predictionSteps": [
+      1
+    ], 
+    "predictedField": "kw_energy_consumption"
+  }, 
+  "iterationCount": -1, 
+  "swarmSize": "small"  
+}
