@@ -1,0 +1,37 @@
+{
+  "includedFields": [
+    {
+      "fieldName": "timestamp",
+      "fieldType": "datetime"
+    },
+    {
+      "fieldName": "kw_energy_consumption",
+      "fieldType": "float",
+      "maxValue": 53.0,
+      "minValue": 0.0
+    }
+  ],
+  "streamDef": {
+    "info": "test",
+    "version": 1,
+    "streams": [
+      {
+        "info": "Rec Center",
+        "source": "file://ab_experiments/swarm/data/rec-center-hourly.csv",
+        "columns": [
+          "*"
+        ]
+      }
+    ]
+  },
+
+  "inferenceType": "TemporalMultiStep",
+  "inferenceArgs": {
+    "predictionSteps": [
+      1
+    ],
+    "predictedField": "kw_energy_consumption"
+  },
+  "iterationCount": -1,
+  "swarmSize": "medium"
+}
