@@ -1,0 +1,36 @@
+{
+  "inferenceArgs": {
+    "predictionSteps": [
+      1
+    ], 
+    "predictedField": "value"
+  }, 
+  "iterationCount": -1, 
+  "swarmSize": "medium", 
+  "includedFields": [
+    {
+      "fieldName": "timestamp", 
+      "fieldType": "datetime"
+    }, 
+    {
+      "maxValue": 108.5105428, 
+      "fieldName": "value", 
+      "fieldType": "float", 
+      "minValue": 2.084721206
+    }
+  ], 
+  "streamDef": {
+    "info": "Experiment", 
+    "version": 1, 
+    "streams": [
+      {
+        "info": "Exp", 
+        "source": "file://ab_experiments/data/NAB/realKnownCause/machine_temperature_system_failure.csv", 
+        "columns": [
+          "*"
+        ]
+      }
+    ]
+  }, 
+  "inferenceType": "TemporalAnomaly"
+}
