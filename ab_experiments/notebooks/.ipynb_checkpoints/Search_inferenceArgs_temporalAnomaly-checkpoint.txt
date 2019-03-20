@@ -1,0 +1,2 @@
+/home/alessandro/Nextcloud/Leuphana/Masterthesis/Anomaly_Detection/nupic/src/nupic
+grep "TemporalAnomaly" . -R -n
