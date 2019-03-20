@@ -22,6 +22,12 @@
             "2014-04-12 01:45:00.000000"
         ]
     ],
+    "artificialWithAnomaly/art_daily_jumpsup_AB.csv": [
+        [
+            "2014-04-03 20:10:00.000000",
+            "2014-04-04 16:25:00.000000"
+        ]
+    ],
     "artificialWithAnomaly/art_daily_nojump.csv": [
         [
             "2014-04-10 16:15:00.000000",
