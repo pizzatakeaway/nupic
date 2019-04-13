@@ -25,7 +25,7 @@ The following dependencies are required to install NuPIC on all operating system
 
 # Install
 1. Git clone: (https://github.com/pizzatakeaway/nupic)[https://github.com/pizzatakeaway/nupic]
-1. Install the environment, type `$ pipenv --two` when in `/home/alessandro/Nextcloud/Leuphana/Masterthesis/Anomaly_Detection/nupic`.  
+1. Install the environment, type `$ pipenv --two` when in `~/Anomaly_Detection/nupic`.  
 The environment is installed in `~/.local/share/virtualenvs/nupic-yn_sXeWq/lib/python2.7/site-packages/nupic`.
 1. Activate environment `$ pipenv shell`
 1. Install requirements `$ pip install -r requirements`.  
@@ -92,3 +92,7 @@ To find the right hyperparameters we decided to adopt the *swarming algorithm*, 
     1. **Error Metric**: by default, your model’s accuracy will be evaluated using a MAPE (Mean Average Percent Error) error metric over the last 1000 records seen by the model.
     1. **Custom Error Metric**: [link](http://nupic.docs.numenta.org/stable/guides/swarming/running.html#using-custom-error-metrics)
 1. run `run_swarm.py --maxWorkers=4`
+1. The parameters models returned by `swarm.py` performed very poorly. See `~ab_experiments/notebooks/Univariate_SwarmParam.ipynb`. 
+
+The paramaters returned by `from nupic.frameworks.opf.common_models.cluster_params import getScalarMetricWithTimeOfDayAnomalyParams` perform way better.
+This has then been used in all other experiments.
