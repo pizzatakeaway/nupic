@@ -27,6 +27,7 @@ PrettyTable = "==0.7.2"
 ipykernel = "*"
 jupyterlab = "*"
 requirements-txt = "*"
+nupic = {editable = true,path = "."}
 
 [requires]
 python_version = "2.7"
